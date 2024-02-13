@@ -1,22 +1,27 @@
-import random
-import torch
-from constants import *
-import matplotlib.pyplot as plt
 import os
+
+import matplotlib.pyplot as plt
 import numpy as np
+import torch
+
+from constants import *
+
 
 def get_random_song_slice(data, sequence_length):
     """
     TODO: Retrieves a random slice of the given data with the specified sequence length.
 
     Args:
+    ----
         data (str): The input data (e.g., song notation).
         sequence_length (int): The desired length of the sequence to extract.
 
     Returns:
+    -------
         list: A random slice of the input data with the specified sequence length.
     """
     raise NotImplementedError
+
 
 def characters_to_tensor(sequence, char_idx_map):
     """
@@ -24,13 +29,18 @@ def characters_to_tensor(sequence, char_idx_map):
     (DON'T CHANGE)
 
     Args:
+    ----
         sequence (str): The sequence of characters to convert.
         char_idx_map (dict): A map of characters to their index
 
     Returns:
+    -------
         torch.Tensor: A PyTorch tensor representing the input sequence.
     """
-    return torch.tensor([char_idx_map[character] for character in sequence], dtype=torch.long)
+    return torch.tensor(
+        [char_idx_map[character] for character in sequence], dtype=torch.long
+    )
+
 
 def get_random_song_sequence_target(song, char_idx_map, sequence_length):
     """
@@ -38,12 +48,14 @@ def get_random_song_sequence_target(song, char_idx_map, sequence_length):
     (DON'T CHANGE)
 
     Args:
+    ----
         song (str): The song data, represented as a string.
         char_idx_map (dict): A map of characters to their index
         sequence_length (int): The desired length of the sequence to extract.
 
     Returns:
-        tuple: A tuple containing the PyTorch tensor representing the input sequence 
+    -------
+        tuple: A tuple containing the PyTorch tensor representing the input sequence
                and the PyTorch tensor representing the target sequence.
     """
     sequence = get_random_song_slice(song, sequence_length)
@@ -65,32 +77,35 @@ def get_character_from_index(char_idx_map, index):
 
 def plot_losses(train_losses, val_losses, fname):
     """
-    Plots the training and validation losses across epochs and saves the plot as an image file with name - fname(function argument). 
+    Plots the training and validation losses across epochs and saves the plot as an image file with name - fname(function argument).
 
     Args:
+    ----
         train_losses (list): List of training losses for each epoch.
         val_losses (list): List of validation losses for each epoch.
         fname (str): Name of the file to save the plot (without extension).
 
     Returns:
+    -------
         None
     """
 
     # Create 'plots' directory if it doesn't exist
 
-    if not os.path.isdir('plots'):
-        os.mkdir('plots')
+    if not os.path.isdir("plots"):
+        os.mkdir("plots")
 
     # Plotting training and validation losses
-    plt.plot(train_losses, label='Training Loss')
-    plt.plot(val_losses, label='Validation Loss')
-    plt.xlabel('Epoch')
-    plt.ylabel('Loss')
-    plt.title('Loss per Epoch')
+    plt.plot(train_losses, label="Training Loss")
+    plt.plot(val_losses, label="Validation Loss")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.title("Loss per Epoch")
     plt.legend()
 
     # Saving the plot as an image file in 'plots' directory
     plt.savefig("./plots/" + fname + ".png")
+
 
 def pad(song, data, pad_factor=20):
     """
@@ -98,23 +113,34 @@ def pad(song, data, pad_factor=20):
     (DON'T CHANGE)
 
     Args:
+    ----
         song (list): generated song.
         data (list): heatmap values.
         pad_factor (itn): padding data to a multiple of pad_factor.
 
     Returns:
+    -------
         padded sequences
     """
-    padded_song = np.asarray(list(song.ljust((len(song) // pad_factor + 1) * pad_factor)))
-    padded_data = np.pad(data, (0, ((pad_factor-((len(data))%pad_factor))%pad_factor)), mode='constant', constant_values=0.0)
+    padded_song = np.asarray(
+        list(song.ljust((len(song) // pad_factor + 1) * pad_factor))
+    )
+    padded_data = np.pad(
+        data,
+        (0, ((pad_factor - ((len(data)) % pad_factor)) % pad_factor)),
+        mode="constant",
+        constant_values=0.0,
+    )
     return padded_song, padded_data
+
 
 def show_values(pc, song, fmt="%.2f", **kw):
     """
-    Utility function to plot the heatmap. 
+    Utility function to plot the heatmap.
     (DON'T CHANGE)
 
     Returns:
+    -------
         None
     """
     pc.update_scalarmappable()
@@ -125,9 +151,17 @@ def show_values(pc, song, fmt="%.2f", **kw):
             color = (0.0, 0.0, 0.0)
         else:
             color = (1.0, 1.0, 1.0)
-        
-        x_idx, y_idx = int(x-0.5), int(y-0.5)
-        
-        if y_idx<len(song) and x_idx<len(song[0]):
-            ax.text(x, y, repr(song[y_idx][x_idx])[1:-1], fontsize=45, ha="center", va="center", color=color, **kw)
 
+        x_idx, y_idx = int(x - 0.5), int(y - 0.5)
+
+        if y_idx < len(song) and x_idx < len(song[0]):
+            ax.text(
+                x,
+                y,
+                repr(song[y_idx][x_idx])[1:-1],
+                fontsize=45,
+                ha="center",
+                va="center",
+                color=color,
+                **kw,
+            )
