@@ -6,7 +6,7 @@ import torch
 
 from .constants import INPUT_TRAIN_PATH, INPUT_VAL_PATH
 from .generate import generate_song
-from .songrnn import SongRNN
+from .SongRNN import SongRNN
 from .train import train
 from .util import load_data, plot_losses
 

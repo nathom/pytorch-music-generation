@@ -1,7 +1,8 @@
 import numpy as np
+import matplotlib.pyplot as plt
 import torch
 
-from .util import characters_to_tensor
+from .util import characters_to_tensor, pad, show_values
 
 
 def generate_song(

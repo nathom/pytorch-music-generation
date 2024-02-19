@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 
 from . import util
-from .songrnn import SongRNN
+from .SongRNN import SongRNN
 
 
 def train(
