@@ -87,9 +87,8 @@ def train(
             torch.nn.utils.clip_grad_norm_(model.parameters(), 0.25)
             optimizer.step()
 
-            curr_loss = loss.item() / SEQ_SIZE
-            total_loss += curr_loss
-            avg_loss_per_sequence = curr_loss
+            avg_loss_per_sequence = loss.item()
+            total_loss += avg_loss_per_sequence
 
             # Display progress
             msg = "\rTraining Epoch: {}, {:.2f}% iter: {} Loss: {:.4}".format(
@@ -102,12 +101,12 @@ def train(
 
         # Append the avg loss on the training dataset to train_losses list
 
-        train_losses.append(avg_loss_per_sequence)
+        train_losses.append(total_loss / len(data))
 
         # VAL: Evaluate Model on Validation dataset
         model.eval()  # Put in eval mode (disables batchnorm/dropout) !
         with torch.no_grad():  # we don't need to calculate the gradient in the validation/testing
-            val_loss_sum = 0.0
+            val_loss_total = 0.0
             for i in range(len(data_val)):
                 hidden = model.init_hidden(1, device)  # Zero out the hidden layer
 
@@ -126,9 +125,9 @@ def train(
                 val_loss = criterion(
                     output.view(-1, len(char_idx_map)), target_seq.view(-1)
                 )
-                val_loss_sum += val_loss.item()
 
-                avg_loss_per_sequence = val_loss / SEQ_SIZE
+                avg_loss_per_sequence = val_loss.item()
+                val_loss_total += avg_loss_per_sequence
 
                 # Display progress
                 msg = "\rValidation Epoch: {}, {:.2f}% iter: {} Loss: {:.4}".format(
@@ -140,7 +139,7 @@ def train(
             print()
 
         # Append the avg loss on the validation dataset to validation_losses list
-        validation_losses.append(avg_loss_per_sequence)
+        validation_losses.append(val_loss_total / len(data_val))
 
         model.train()  # TURNING THE TRAIN MODE BACK ON !
 
