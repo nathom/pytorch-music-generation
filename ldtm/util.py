@@ -1,13 +1,52 @@
 import os
+import random
 
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-from constants import *
+
+def load_data(file, config):
+    """
+    Load song data from a file.
+
+    Parameters:
+    ----------
+    - file (str): The path to the data file
+    - config (dict): A dictionary containing configuration parameters:
+        - "sequence_size" (int): The size of the sequences to extract from the data and train our model.
+        (We want to ensure that the song we use is atleast as big as the sequence size)
+
+    Returns:
+    -------
+    - data (list): A list of sequences extracted from the data file
+    """
+
+    # Extract configuration parameters
+    SEQ_SIZE = config["sequence_size"]
+
+    # Initialize an empty list to store the data
+    data = []
+
+    # Read data from the file
+    with open(file, "r") as f:
+        buffer = ""
+        for line in f:
+            if line == "<start>\n":
+                buffer = line
+            elif line == "<end>\n":
+                buffer += line
+                # Check if the buffer size meets the sequence size threshold
+                if len(buffer) > SEQ_SIZE + 10:
+                    data.append(buffer)
+                buffer = ""
+            else:
+                buffer += line
+
+    return data
 
 
-def get_random_song_slice(data, sequence_length):
+def get_random_sequence(data, sequence_length):
     """
     TODO: Retrieves a random slice of the given data with the specified sequence length.
 
@@ -20,7 +59,8 @@ def get_random_song_slice(data, sequence_length):
     -------
         list: A random slice of the input data with the specified sequence length.
     """
-    raise NotImplementedError
+    start_index = random.randint(0, len(data) - sequence_length - 1)
+    return data[start_index : start_index + sequence_length]
 
 
 def characters_to_tensor(sequence, char_idx_map):
@@ -58,7 +98,7 @@ def get_random_song_sequence_target(song, char_idx_map, sequence_length):
         tuple: A tuple containing the PyTorch tensor representing the input sequence
                and the PyTorch tensor representing the target sequence.
     """
-    sequence = get_random_song_slice(song, sequence_length)
+    sequence = get_random_sequence(song, sequence_length)
     sequence_tensor = characters_to_tensor(sequence[:-1], char_idx_map)
     target_tensor = characters_to_tensor(sequence[1:], char_idx_map)
     return sequence_tensor, target_tensor

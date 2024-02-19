@@ -1,13 +1,21 @@
 import os
 import sys
 
-from constants import *
-from dataLoader import *
-from train import *
-from util import *
+import torch
+import torch.nn as nn
+
+from . import util
+from .songrnn import SongRNN
 
 
-def train(model, data, data_val, char_idx_map, config, device):
+def train(
+    model: SongRNN,
+    data: list[str],
+    data_val: list[str],
+    char_idx_map: dict[str, int],
+    config,
+    device: torch.device,
+):
     """
     Train the provided model using the specified configuration and data.
 
@@ -38,43 +46,50 @@ def train(model, data, data_val, char_idx_map, config, device):
         MODEL_TYPE, N_EPOCHS, HIDDEN_SIZE, DROPOUT_P
     )
 
-    model = None  # TODO: Move model to the specified device
+    model = model.to(device)
 
-    optimizer = None  # TODO: Initialize optimizer
-
-    loss = None  # TODO: Initialize loss function
+    optimizer = torch.optim.Adam(model.parameters(), lr=LR)
+    criterion = nn.CrossEntropyLoss()
 
     # Lists to store training and validation losses over the epochs
     train_losses, validation_losses = [], []
 
     # Training over epochs
+    hidden = model.init_hidden(1, device)  # Zero out the hidden layer
     for epoch in range(N_EPOCHS):
         # TRAIN: Train model over training data
+        total_loss = 0.0
         for i in range(len(data)):
-            """
-            TODO: 
-                - For each song:
-                    - Zero out/Re-initialise the hidden layer (When you start a new song, the hidden layer state should start at all 0’s.) (Done for you)
-                    - Zero out the gradient (Done for you)
-                    - Get a random sequence of length: SEQ_SIZE from each song (check util.py)
-                    - Iterate over sequence characters : 
-                        - Transfer the input and the corresponding ground truth to the same device as the model's
-                        - Do a forward pass through the model
-                        - Calculate loss per character of sequence
-                    - backpropagate the loss after iterating over the sequence of characters
-                    - update the weights after iterating over the sequence of characters
-                    - Calculate avg loss for the sequence
-                - Calculate avg loss for the training dataset 
+            optimizer.zero_grad()  # Zero out the gradient
+            hidden = model.detach_hidden(hidden)
 
+            # Get random sequence from data
+            input_seq, target_seq = util.get_random_song_sequence_target(
+                data[i], char_idx_map, SEQ_SIZE
+            )
+            input_seq = input_seq.unsqueeze(0)
+            target_seq = target_seq.unsqueeze(0)
+            # Move to device
+            input_seq = torch.tensor(input_seq, dtype=torch.long).to(device)
+            target_seq = torch.tensor(target_seq, dtype=torch.long).to(device)
 
-            """
+            output: torch.Tensor
 
-            model.init_hidden()  # Zero out the hidden layer (When you start a new song, the hidden layer state should start at all 0’s.)
-            model.zero_grad()  # Zero out the gradient
+            output, hidden = model(input_seq, hidden)
 
-            # TODO: Finish next steps here
+            # reshape data
+            output = output.view(-1, len(char_idx_map))
+            target_seq = target_seq.view(-1)
+            loss = criterion(output, target_seq)
 
-            avg_loss_per_sequence = None
+            loss.backward()
+            # TODO: clip grad norm?
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 0.25)
+            optimizer.step()
+
+            curr_loss = loss.item() / SEQ_SIZE
+            total_loss += curr_loss
+            avg_loss_per_sequence = curr_loss
 
             # Display progress
             msg = "\rTraining Epoch: {}, {:.2f}% iter: {} Loss: {:.4}".format(
@@ -85,31 +100,35 @@ def train(model, data, data_val, char_idx_map, config, device):
 
         print()
 
-        # TODO: Append the avg loss on the training dataset to train_losses list
+        # Append the avg loss on the training dataset to train_losses list
+
+        train_losses.append(avg_loss_per_sequence)
 
         # VAL: Evaluate Model on Validation dataset
         model.eval()  # Put in eval mode (disables batchnorm/dropout) !
         with torch.no_grad():  # we don't need to calculate the gradient in the validation/testing
-            # Iterate over validation data
+            val_loss_sum = 0.0
             for i in range(len(data_val)):
-                """
-                TODO: 
-                    - For each song:
-                        - Zero out/Re-initialise the hidden layer (When you start a new song, the hidden layer state should start at all 0’s.) (Done for you)
-                        - Get a random sequence of length: SEQ_SIZE from each song- Get a random sequence of length: SEQ_SIZE from each song (check util.py)
-                        - Iterate over sequence characters : 
-                            - Transfer the input and the corresponding ground truth to the same device as the model's
-                            - Do a forward pass through the model
-                            - Calculate loss per character of sequence
-                        - Calculate avg loss for the sequence
-                    - Calculate avg loss for the validation dataset 
-                """
+                hidden = model.init_hidden(1, device)  # Zero out the hidden layer
 
-                model.init_hidden()  # Zero out the hidden layer (When you start a new song, the hidden layer state should start at all 0’s.)
+                input_seq, target_seq = util.get_random_song_sequence_target(
+                    data_val[i], char_idx_map, SEQ_SIZE
+                )
+                # add batch size dim
+                input_seq = input_seq.unsqueeze(0)
+                target_seq = target_seq.unsqueeze(0)
 
-                # TODO: Finish next steps here
+                input_seq = torch.tensor(input_seq, dtype=torch.long).to(device)
+                target_seq = torch.tensor(target_seq, dtype=torch.long).to(device)
 
-                avg_loss_per_sequence = None
+                output, _ = model(input_seq, hidden)
+
+                val_loss = criterion(
+                    output.view(-1, len(char_idx_map)), target_seq.view(-1)
+                )
+                val_loss_sum += val_loss.item()
+
+                avg_loss_per_sequence = val_loss / SEQ_SIZE
 
                 # Display progress
                 msg = "\rValidation Epoch: {}, {:.2f}% iter: {} Loss: {:.4}".format(
@@ -120,7 +139,8 @@ def train(model, data, data_val, char_idx_map, config, device):
 
             print()
 
-        # TODO: Append the avg loss on the validation dataset to validation_losses list
+        # Append the avg loss on the validation dataset to validation_losses list
+        validation_losses.append(avg_loss_per_sequence)
 
         model.train()  # TURNING THE TRAIN MODE BACK ON !
 
@@ -135,7 +155,7 @@ def train(model, data, data_val, char_idx_map, config, device):
                     "epoch": epoch + 1,
                     "model_state_dict": model.state_dict(),
                     "optimizer_state_dict": optimizer.state_dict(),
-                    "loss": loss_function,
+                    "loss": criterion,
                 },
                 "./checkpoint/" + CHECKPOINT + ".t%s" % epoch,
             )

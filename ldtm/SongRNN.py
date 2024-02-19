@@ -1,3 +1,5 @@
+import math
+
 import torch
 import torch.nn as nn
 
@@ -9,34 +11,36 @@ class SongRNN(nn.Module):
         """
         super(SongRNN, self).__init__()
 
-        HIDDEN_SIZE = config["hidden_size"]
+        embedding_dim = config["hidden_size"]
         NUM_LAYERS = config["no_layers"]
-        MODEL_TYPE = config["model_type"]
+        MODEL_TYPE = config["model_type"].upper()
         DROPOUT_P = config["dropout"]
 
         self.model_type = MODEL_TYPE
         self.input_size = input_size
-        self.hidden_size = HIDDEN_SIZE
+        self.embedding_dim = embedding_dim
         self.output_size = output_size
         self.num_layers = NUM_LAYERS
         self.dropout_p = DROPOUT_P
 
         # Initialize embedding layer
-        self.embedding = nn.Embedding(input_size, HIDDEN_SIZE)
+        self.embedding = nn.Embedding(input_size, embedding_dim)
 
         # Initialize recurrent layer (LSTM or RNN)
+        self.lstm: nn.LSTM | None
+        self.rnn: nn.RNN | None
         if MODEL_TYPE == "LSTM":
-            self.rnn = nn.LSTM(
-                input_size=HIDDEN_SIZE,
-                hidden_size=HIDDEN_SIZE,
+            self.lstm = nn.LSTM(
+                input_size=embedding_dim,
+                hidden_size=embedding_dim,
                 num_layers=NUM_LAYERS,
                 dropout=DROPOUT_P,
                 batch_first=True,
             )
         elif MODEL_TYPE == "RNN":
             self.rnn = nn.RNN(
-                input_size=HIDDEN_SIZE,
-                hidden_size=HIDDEN_SIZE,
+                input_size=embedding_dim,
+                hidden_size=embedding_dim,
                 num_layers=NUM_LAYERS,
                 dropout=DROPOUT_P,
                 batch_first=True,
@@ -47,12 +51,33 @@ class SongRNN(nn.Module):
             )
 
         # Initialize linear output layer
-        self.linear = nn.Linear(HIDDEN_SIZE, output_size)
+        self.fc = nn.Linear(embedding_dim, output_size)
 
         # Initialize dropout layer
         self.dropout = nn.Dropout(DROPOUT_P)
+        self.init_weights()
 
-    def init_hidden(self, batch_size):
+    def init_weights(self):
+        init_range_emb = 0.1
+        init_range_other = 1 / math.sqrt(self.embedding_dim)
+        self.embedding.weight.data.uniform_(-init_range_emb, init_range_emb)
+        self.fc.weight.data.uniform_(-init_range_other, init_range_other)
+        self.fc.bias.data.zero_()
+        if self.model_type == "LSTM":
+            assert self.lstm is not None
+            for i in range(self.num_layers):
+                self.lstm.all_weights[i][0] = torch.FloatTensor(  # type: ignore
+                    self.embedding_dim, self.embedding_dim
+                ).uniform_(-init_range_other, init_range_other)
+                self.lstm.all_weights[i][1] = torch.FloatTensor(  # type: ignore
+                    self.embedding_dim, self.embedding_dim
+                ).uniform_(-init_range_other, init_range_other)
+        else:
+            raise NotImplementedError
+
+    def init_hidden(
+        self, batch_size, device
+    ) -> tuple[torch.Tensor, torch.Tensor | None]:
         """
         Initializes the hidden state for the recurrent neural network.
 
@@ -66,17 +91,25 @@ class SongRNN(nn.Module):
         """
         if self.model_type == "LSTM":
             return (
-                torch.zeros(self.num_layers, batch_size, self.hidden_size),
-                torch.zeros(self.num_layers, batch_size, self.hidden_size),
+                torch.zeros(self.num_layers, batch_size, self.embedding_dim).to(device),
+                torch.zeros(self.num_layers, batch_size, self.embedding_dim).to(device),
             )
         elif self.model_type == "RNN":
-            return torch.zeros(self.num_layers, batch_size, self.hidden_size)
+            return torch.zeros(self.num_layers, batch_size, self.embedding_dim).to(
+                device
+            ), None
         else:
             raise ValueError(
                 "Invalid model type. Supported types are 'LSTM' and 'RNN'."
             )
 
-    def forward(self, seq):
+    def detach_hidden(self, hidden):
+        hidden, cell = hidden
+        hidden = hidden.detach()
+        cell = cell.detach()
+        return hidden, cell
+
+    def forward(self, seq, hidden):
         """
         Forward pass of the SongRNN model.
         (Hint: In teacher forcing, for each run of the model, input will be a single character
@@ -95,9 +128,18 @@ class SongRNN(nn.Module):
         """
 
         embedded = self.embedding(seq)
-        rnn_out, _ = self.rnn(embedded)
-        rnn_out = rnn_out[:, -1, :]  # Take the last time step's output
-        dropped_out = self.dropout(rnn_out)
-        output = self.linear(dropped_out)
+        if self.model_type == "LSTM":
+            # hidden = (hidden[0].squeeze(), hidden[1].squeeze())
+            output, hidden = self.lstm(embedded, hidden)
+        elif self.model_type == "RNN":
+            output, _ = self.rnn(embedded)
+            output = output[:, -1, :]  # Take the last time step's output
+            raise NotImplementedError
+        else:
+            raise Exception(f"Invalid model type {self.model_type}")
 
-        return output
+        if self.training:
+            output = self.dropout(output)
+        output = self.fc(output)
+
+        return output, hidden

@@ -4,35 +4,37 @@ import json
 
 import torch
 
-from constants import *
-from generate import *
-from SongRNN import *
-from train import *
-from util import *
+from .constants import INPUT_TRAIN_PATH, INPUT_VAL_PATH
+from .generate import generate_song
+from .songrnn import SongRNN
+from .train import train
+from .util import load_data, plot_losses
 
 with open(INPUT_TRAIN_PATH, "r") as f:
     char_set = sorted(set(f.read()))
 
-char_idx_map = {character: index for index, character in enumerate(char_set)}
+char_idx_map: dict[str, int] = {
+    character: index for index, character in enumerate(char_set)
+}
+idx_char_map: dict[int, str] = {
+    index: character for character, index in char_idx_map.items()
+}
 
 # TODO determine which device to use (cuda or cpu)
-device = "cpu"
 if torch.cuda.is_available():
+    print("Using CUDA")
     device = torch.device("cuda")
+elif torch.backends.mps.is_available() and torch.backends.mps.is_built():
+    print("Using MPS")
+    device = torch.device("mps")
+else:
+    print("Using CPU")
+    device = torch.device("cpu")
 
 
-if __name__ == "__main__":
-    # python3 main.py --config config.json  -> To Run the code
-
-    # Parse the input arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--config", type=str, default="config.json", help="Specify the config file"
-    )
-    args = parser.parse_args()
-
+def run(args):
     # Load the configuration from the specified config file
-    with open("config.json", "r") as config_file:
+    with open(args.config, "r") as config_file:
         config = json.load(config_file)
 
     # Extract configuration parameters
@@ -81,6 +83,7 @@ if __name__ == "__main__":
         model,
         device,
         char_idx_map,
+        idx_char_map,
         max_len=MAX_GENERATION_LENGTH,
         temp=TEMPERATURE,
         prime_str=prime_str,
@@ -96,3 +99,16 @@ if __name__ == "__main__":
     # housekeeping
     gc.collect()
     torch.cuda.empty_cache()
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--config", type=str, default="config.json", help="Specify the config file"
+    )
+    args = parser.parse_args()
+    run(args)
+
+
+if __name__ == "__main__":
+    main()
