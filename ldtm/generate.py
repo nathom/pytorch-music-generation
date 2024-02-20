@@ -1,8 +1,9 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
 from .songrnn import SongRNN
-from .util import characters_to_tensor
+from .util import characters_to_tensor, pad, show_values
 
 
 def generate_song(
