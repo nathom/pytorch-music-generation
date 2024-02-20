@@ -65,13 +65,8 @@ def train(
 
             # Get random sequence from data
             input_seq, target_seq = util.get_random_song_sequence_target(
-                data[i], char_idx_map, SEQ_SIZE
+                data[i], char_idx_map, SEQ_SIZE, device
             )
-            input_seq = input_seq.unsqueeze(0)
-            target_seq = target_seq.unsqueeze(0)
-            # Move to device
-            input_seq = torch.tensor(input_seq, dtype=torch.long).to(device)
-            target_seq = torch.tensor(target_seq, dtype=torch.long).to(device)
 
             output: torch.Tensor
 
@@ -111,15 +106,9 @@ def train(
                 hidden = model.init_hidden(1, device)  # Zero out the hidden layer
 
                 input_seq, target_seq = util.get_random_song_sequence_target(
-                    data_val[i], char_idx_map, SEQ_SIZE
+                    data_val[i], char_idx_map, SEQ_SIZE, device
                 )
                 # add batch size dim
-                input_seq = input_seq.unsqueeze(0)
-                target_seq = target_seq.unsqueeze(0)
-
-                input_seq = torch.tensor(input_seq, dtype=torch.long).to(device)
-                target_seq = torch.tensor(target_seq, dtype=torch.long).to(device)
-
                 output, _ = model(input_seq, hidden)
 
                 val_loss = criterion(
@@ -149,14 +138,7 @@ def train(
         # Save checkpoint.
         if (epoch % SAVE_EVERY == 0 and epoch != 0) or epoch == N_EPOCHS - 1:
             print("=======>Saving..")
-            torch.save(
-                {
-                    "epoch": epoch + 1,
-                    "model_state_dict": model.state_dict(),
-                    "optimizer_state_dict": optimizer.state_dict(),
-                    "loss": criterion,
-                },
-                "./checkpoint/" + CHECKPOINT + ".t%s" % epoch,
-            )
+            with open("./checkpoint/" + CHECKPOINT + ".t%s" % epoch, "wb") as f:
+                torch.save(model, f)
 
     return train_losses, validation_losses
