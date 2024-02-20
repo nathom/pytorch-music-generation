@@ -3,7 +3,7 @@ import numpy as np
 import torch
 
 from .SongRNN import SongRNN
-from .util import characters_to_tensor, pad, show_values, pad, show_values
+from .util import characters_to_tensor, pad, show_values
 
 
 def generate_song(
@@ -34,6 +34,7 @@ def generate_song(
     - generated_song (str): The generated song as a string
     """
 
+    device = torch.device("cpu")
     # Move model to the specified device and set the model to evaluation mode
     model.to(device)
     model.eval()
@@ -75,8 +76,7 @@ def generate_song(
     model.train()
 
     if show_heatmap:
-        # TODO: Call the generate_heatmap function to form the heatmap
-        raise NotImplementedError("Heatmap generation not implemented yet")
+        generate_heatmap(generated_song, char_idx_map, 0)
 
     return generated_song
 
