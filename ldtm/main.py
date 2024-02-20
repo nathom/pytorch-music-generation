@@ -1,6 +1,7 @@
 import argparse
 import gc
 import json
+import os
 
 import torch
 
@@ -90,11 +91,14 @@ def run(args):
         show_heatmap=SHOW_HEATMAP,
     )
 
+    if not os.path.isdir("songs"):
+        os.mkdir("songs")
+
     # Write the generated song to a file
-    with open(generated_song_file_path, "w") as file:
+    with open("./songs/" + generated_song_file_path, "w") as file:
         file.write(generated_song)
 
-    print("Generated song is written to : ", generated_song_file_path)
+    print("Generated song is written to : ", "./songs/" + generated_song_file_path)
 
     # housekeeping
     gc.collect()

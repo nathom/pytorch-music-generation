@@ -34,9 +34,8 @@ def generate_song(
     - generated_song (str): The generated song as a string
     """
 
-    device = torch.device("cpu")
     # Move model to the specified device and set the model to evaluation mode
-    model.to(device)
+    model: SongRNN = model.to(device)
     model.eval()
 
     # Initialize the hidden state
@@ -47,7 +46,8 @@ def generate_song(
         generated_song = prime_str
         prime = characters_to_tensor(generated_song, char_idx_map)
         for i in range(len(prime)):
-            _ = model(prime[i])
+            c = prime[i].unsqueeze(0).unsqueeze(0).to(device)
+            _, hidden = model(c, hidden)
 
         # Continue generating the rest of the sequence until reaching the maximum length or encountering the end token.
         for _ in range(max_len - len(prime_str)):
@@ -76,7 +76,8 @@ def generate_song(
     model.train()
 
     if show_heatmap:
-        generate_heatmap(generated_song, char_idx_map, 0)
+        # TODO: Call the generate_heatmap function to form the heatmap
+        raise NotImplementedError("Heatmap generation not implemented yet")
 
     return generated_song
 
