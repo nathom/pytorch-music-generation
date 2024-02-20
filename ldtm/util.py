@@ -135,9 +135,8 @@ def plot_losses(train_losses, val_losses, fname):
     """
 
     # Create 'plots' directory if it doesn't exist
-
-    if not os.path.isdir("plots"):
-        os.mkdir("plots")
+    if not os.path.isdir("./writeup/plots"):
+        os.mkdir("./writeup/plots")
 
     # Plotting training and validation losses
     plt.plot(train_losses, label="Training Loss")
@@ -148,7 +147,7 @@ def plot_losses(train_losses, val_losses, fname):
     plt.legend()
 
     # Saving the plot as an image file in 'plots' directory
-    plt.savefig("./plots/" + fname + ".png")
+    plt.savefig("./writeup/plots/" + fname + ".png")
 
 
 def pad(song, data, pad_factor=20):

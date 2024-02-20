@@ -1,6 +1,7 @@
 import argparse
 import gc
 import json
+import os
 
 import torch
 
@@ -20,7 +21,6 @@ idx_char_map: dict[int, str] = {
     index: character for character, index in char_idx_map.items()
 }
 
-# TODO determine which device to use (cuda or cpu)
 if torch.cuda.is_available():
     print("Using CUDA")
     device = torch.device("cuda")
@@ -30,7 +30,6 @@ elif torch.backends.mps.is_available() and torch.backends.mps.is_built():
 else:
     print("Using CPU")
     device = torch.device("cpu")
-
 
 def run(args):
     # Load the configuration from the specified config file
@@ -92,11 +91,14 @@ def run(args):
         show_heatmap=SHOW_HEATMAP,
     )
 
+    if not os.path.isdir("songs"):
+        os.mkdir("songs")
+
     # Write the generated song to a file
-    with open(generated_song_file_path, "w") as file:
+    with open("./songs/" + generated_song_file_path, "w") as file:
         file.write(generated_song)
 
-    print("Generated song is written to : ", generated_song_file_path)
+    print("Generated song is written to : ", "./songs/" + generated_song_file_path)
 
     # housekeeping
     gc.collect()
