@@ -82,7 +82,7 @@ def characters_to_tensor(sequence, char_idx_map):
     )
 
 
-def get_random_song_sequence_target(song, char_idx_map, sequence_length):
+def get_random_song_sequence_target(song, char_idx_map, sequence_length, device):
     """
     Retrieves a random sequence from the given song data along with its target sequence.
     (DON'T CHANGE)
@@ -101,6 +101,10 @@ def get_random_song_sequence_target(song, char_idx_map, sequence_length):
     sequence = get_random_sequence(song, sequence_length)
     sequence_tensor = characters_to_tensor(sequence[:-1], char_idx_map)
     target_tensor = characters_to_tensor(sequence[1:], char_idx_map)
+    sequence_tensor, target_tensor = (
+        sequence_tensor.unsqueeze(0).to(device),
+        target_tensor.unsqueeze(0).to(device),
+    )
     return sequence_tensor, target_tensor
 
 

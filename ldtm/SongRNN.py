@@ -34,7 +34,6 @@ class SongRNN(nn.Module):
                 input_size=embedding_dim,
                 hidden_size=embedding_dim,
                 num_layers=NUM_LAYERS,
-                dropout=DROPOUT_P,
                 batch_first=True,
             )
         elif MODEL_TYPE == "RNN":
@@ -55,7 +54,7 @@ class SongRNN(nn.Module):
 
         # Initialize dropout layer
         self.dropout = nn.Dropout(DROPOUT_P)
-        self.init_weights()
+        # self.init_weights()
 
     def init_weights(self):
         init_range_emb = 0.1

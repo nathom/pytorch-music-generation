@@ -57,11 +57,8 @@ def run(args):
     # If evaluating model only and trained model path is provided:
     if evaluate_model_only and model_path != "":
         # Load the checkpoint from the specified model path
-        checkpoint = torch.load(model_path)
-
-        # Load the model's state dictionary from the checkpoint
-        model.load_state_dict(checkpoint["model_state_dict"])
-        print("==> Model loaded from checkpoint..")
+        model = torch.load(model_path, map_location=device)
+        print(f"==> Model loaded from checkpoint to {device}..")
     else:
         # Train the model and get the training and validation losses
         losses, v_losses = train(model, data, data_val, char_idx_map, config, device)
@@ -74,8 +71,13 @@ def run(args):
     # prime_str = file.read()
     # print("Prime str = ", prime_str)
 
-    prime_str = "<start>"
+    if args.fur_elise:
+        with open("./data/test_fe.txt", "r") as file:
+            prime_str = file.read()
+    else:
+        prime_str = "<start>"
 
+    print("Prime str = ", prime_str)
     # Generate a song using the trained model
     generated_song = generate_song(
         model,
@@ -104,6 +106,7 @@ def main():
     parser.add_argument(
         "--config", type=str, default="config.json", help="Specify the config file"
     )
+    parser.add_argument("--fur-elise", action="store_true")
     args = parser.parse_args()
     run(args)
 

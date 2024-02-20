@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-from .util import characters_to_tensor, pad, show_values
+from .SongRNN import SongRNN
+from .util import characters_to_tensor, pad, show_values, pad, show_values
 
 
 def generate_song(
@@ -20,7 +21,7 @@ def generate_song(
 
     Parameters:
     ----------
-    - model (nn.Module): The trained model used for generating the song
+    - model (songrnn.SongRNN): The trained model used for generating the song
     - device (torch.device): The device (e.g., "cpu" or "cuda") on which the model is located
     - char_idx_map (dict): A map of characters to their index
     - max_len (int): The maximum length of the generated song
@@ -34,7 +35,6 @@ def generate_song(
     """
 
     # Move model to the specified device and set the model to evaluation mode
-    device = torch.device("cpu")
     model.to(device)
     model.eval()
 
@@ -46,20 +46,23 @@ def generate_song(
         generated_song = prime_str
         prime = characters_to_tensor(generated_song, char_idx_map)
         for i in range(len(prime)):
-            _ = model(prime[i], hidden)
+            _ = model(prime[i])
 
         # Continue generating the rest of the sequence until reaching the maximum length or encountering the end token.
         for _ in range(max_len - len(prime_str)):
-            input_char = characters_to_tensor(
-                generated_song[-1], char_idx_map
-            ).unsqueeze(0)
-            output, _ = model(input_char)
-
-            # Use the temperature parameter to determine the generated/predicted character
-            next_char_idx = sample_from_distribution(
-                output.squeeze().div(temp).exp().cpu()
+            input_char = (
+                characters_to_tensor(generated_song[-1], char_idx_map)
+                .unsqueeze(0)
+                .to(device)
             )
-            next_char = idx_char_map[next_char_idx]
+            output, hidden = model(input_char, hidden)
+
+            out = np.array(np.exp(output.cpu().numpy() / temp))
+            dist = out / np.sum(out)
+            out = out.squeeze()
+            dist = dist.squeeze()
+
+            next_char = idx_char_map[np.random.choice(len(dist), p=dist)]
 
             # Add the generated character to the `generated_song`
             generated_song += next_char
