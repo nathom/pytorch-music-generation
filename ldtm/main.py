@@ -6,7 +6,7 @@ import torch
 
 from .constants import INPUT_TRAIN_PATH, INPUT_VAL_PATH
 from .generate import generate_song
-from .songrnn import SongRNN
+from .SongRNN import SongRNN
 from .train import train
 from .util import load_data, plot_losses
 
@@ -20,7 +20,6 @@ idx_char_map: dict[int, str] = {
     index: character for character, index in char_idx_map.items()
 }
 
-# TODO determine which device to use (cuda or cpu)
 if torch.cuda.is_available():
     print("Using CUDA")
     device = torch.device("cuda")
@@ -30,7 +29,6 @@ elif torch.backends.mps.is_available() and torch.backends.mps.is_built():
 else:
     print("Using CPU")
     device = torch.device("cpu")
-
 
 def run(args):
     # Load the configuration from the specified config file

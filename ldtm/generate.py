@@ -1,7 +1,8 @@
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-from .util import characters_to_tensor
+from .util import characters_to_tensor, pad, show_values
 
 
 def generate_song(
@@ -33,18 +34,19 @@ def generate_song(
     """
 
     # Move model to the specified device and set the model to evaluation mode
+    device = torch.device("cpu")
     model.to(device)
     model.eval()
 
     # Initialize the hidden state
-    hidden = model.init_hidden()
+    hidden = model.init_hidden(1, device)
 
     with torch.no_grad():  # we don't need to calculate the gradient in the validation/testing
         # "build up" hidden state using the beginning of a song '<start>'
         generated_song = prime_str
         prime = characters_to_tensor(generated_song, char_idx_map)
         for i in range(len(prime)):
-            _ = model(prime[i])
+            _ = model(prime[i], hidden)
 
         # Continue generating the rest of the sequence until reaching the maximum length or encountering the end token.
         for _ in range(max_len - len(prime_str)):
