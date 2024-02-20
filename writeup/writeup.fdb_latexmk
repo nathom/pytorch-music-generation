@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex writeup"] 1708391869.54269 "writeup.aux" "writeup.bbl" "writeup" 1708405600.94133 0
+["bibtex writeup"] 1708408911.17063 "writeup.aux" "writeup.bbl" "writeup" 1708408913.80547 0
   "./references.bib" 1708387088 1342 3acc4ac5a03391fc184687ee9894ebfe ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/bibtex/bst/natbib/plainnat.bst" 1284455456 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "writeup.aux" 1708405600 495 ce1714fc87988e59461f53cbfe8cdc81 "pdflatex"
+  "writeup.aux" 1708408912 495 0a636baddc16b8fd3392dcc940c3d377 "pdflatex"
   (generated)
   "writeup.bbl"
   "writeup.blg"
   (rewritten before read)
-["pdflatex"] 1708405598.89799 "c:/Users/Darren Yu/OneDrive/Documents/GitHub/cse151b251b-wi24-pa3-long_darren_tm/writeup/writeup.tex" "writeup.pdf" "writeup" 1708405600.94233 0
+["pdflatex"] 1708408911.79752 "c:/Users/Darren Yu/OneDrive/Documents/GitHub/cse151b251b-wi24-pa3-long_darren_tm/writeup/writeup.tex" "writeup.pdf" "writeup" 1708408913.80646 0
   "C:/Users/Darren Yu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1707371383 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Darren Yu/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk" 1707373016 20028 74b6ee6ff6e13b2eb273198c9fcbe902 ""
   "C:/Users/Darren Yu/AppData/Local/MiKTeX/fonts/tfm/public/amsfonts/cmex7.tfm" 1707372988 940 f9e66c0105a30e64e3a0f5c4f79efb8d ""
@@ -15,7 +15,6 @@
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/adobe/times/ptmb8r.tfm" 1136801054 4524 6bce29db5bc272ba5f332261583fee9c ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/adobe/times/ptmb8t.tfm" 1136801054 6880 f19b8995b61c334d78fc734065f6b4d4 ""
-  "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/adobe/times/ptmr8c.tfm" 1136801054 1352 fa28a7e6d323c65ce7d13d5342ff6be2 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/adobe/times/ptmr8r.tfm" 1136801054 4408 25b74d011a4c66b7f212c0cc3c90061b ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/adobe/times/ptmr8t.tfm" 1136801054 6672 e3ab9e37e925f3045c9005e6d1473d56 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/jknappen/ec/ectt1000.tfm" 993062340 1348 d70ddf2d5d512b838e50a335e385e919 ""
@@ -25,9 +24,7 @@
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1233951854 908 2921f8a10601f252058503cc6570e581 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1233951854 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1233951854 940 228d6584342e91276bf566bcf9716b83 ""
-  "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/public/amsfonts/cm/cmmi5.pfb" 1247596667 37912 07513ec114ac737ab54cea0152f4424b ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1247596667 36281 c355509802a035cadc5f15869451dcee ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1247596667 32762 7fee39e011c23b3589931effd97b9702 ""
@@ -36,7 +33,6 @@
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/urw/times/utmb8a.pfb" 1136882148 44729 fea0975e20ec51c992338362f05f1146 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/type1/urw/times/utmr8a.pfb" 1136882148 46026 687528a208fbfc1f00832bb96cccebbb ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/vf/adobe/times/ptmb8t.vf" 1136801054 2340 df9c920cc5688ebbf16a93f45ce7bdd3 ""
-  "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/vf/adobe/times/ptmr8c.vf" 1136801054 3556 8a9a6dcbcd146ef985683f677f4758a6 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/fonts/vf/adobe/times/ptmr8t.vf" 1136801054 2348 91706c542228501c410c266421fbe30c ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/generic/atbegshi/atbegshi.sty" 1575571100 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -113,7 +109,6 @@
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/microtype/mt-ptm.cfg" 1678670834 12427 02d1873769280609ae2509e963f1fa66 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/natbib/natbib.sty" 1292249081 46712 1c8843383c0bd05870c45fa0ebea6cc2 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/psnfss/t1ptm.fd" 1585253778 817 61d7da1e9f9e74989b196d147e623736 ""
-  "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/psnfss/ts1ptm.fd" 1585253778 653 96f56dc5d1ef1fe1121f1cfeec70ee0c ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/refcount/refcount.sty" 1576433952 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1657800696 9714 ba3194bd52c8499b3f1e3eb91d409670 ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/titlesec/titlesec.sty" 1699094857 48766 0b93839be28e9744a24c45075c75b2e2 ""
@@ -123,16 +118,16 @@
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "c:/Users/Darren Yu/OneDrive/Documents/GitHub/cse151b251b-wi24-pa3-long_darren_tm/writeup/writeup.tex" 1708405597 1862 937578cfe70d836e00ce1f1d936239bb ""
   "neurips_2023.sty" 1708387088 11801 e7b1d28b625442ee69f3e0509f97aaad ""
-  "sections/abstract.tex" 1708391970 885 de31c17f26442d5d492f2c62da921885 ""
+  "sections/abstract.tex" 1708408867 864 e0080bc19f18a8e2dc7d2d84c2696112 ""
   "sections/contributions.tex" 1708391806 363 02310586cef43c0494686bb272f3a8cb ""
   "sections/discussion.tex" 1708387088 3686 0ff1aa1585aa2dfade46d71ec50e4db4 ""
-  "sections/intro.tex" 1708387088 5777 e6c94fcfe46e313eb973a7ab44a95aec ""
+  "sections/intro.tex" 1708408908 37 27b6e711de821e6157f733795fd2f4c2 ""
   "sections/methods.tex" 1708391839 5882 97c5bc14c06e9fc3e9ad914bf33e98db ""
   "sections/related.tex" 1708387088 1717 ce80d364a837bc119e96f2f8ac2f9d71 ""
   "sections/results.tex" 1708391864 3067 ab65f5cfe38b127441ea7fb0f6d44cfb ""
-  "writeup.aux" 1708405600 495 ce1714fc87988e59461f53cbfe8cdc81 "pdflatex"
-  "writeup.bbl" 1708391869 928 c33ec696ab6e7ff6ddf2c0f20ae11c46 "bibtex writeup"
-  "writeup.out" 1708405599 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "writeup.aux" 1708408912 495 0a636baddc16b8fd3392dcc940c3d377 "pdflatex"
+  "writeup.bbl" 1708408911 928 c33ec696ab6e7ff6ddf2c0f20ae11c46 "bibtex writeup"
+  "writeup.out" 1708408912 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "writeup.tex" 1708405597 1862 937578cfe70d836e00ce1f1d936239bb ""
   (generated)
   "writeup.aux"

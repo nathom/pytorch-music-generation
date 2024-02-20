@@ -237,18 +237,11 @@ INPUT .\sections\intro.tex
 INPUT .\sections\intro.tex
 INPUT .\sections\intro.tex
 INPUT sections\intro.tex
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\tfm\adobe\times\ptmr8t.tfm
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\tfm\adobe\times\ptmr8t.tfm
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\tex\latex\psnfss\ts1ptm.fd
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\tex\latex\psnfss\ts1ptm.fd
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\tex\latex\psnfss\ts1ptm.fd
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\tfm\adobe\times\ptmr8c.tfm
 INPUT .\sections\related.tex
 INPUT .\sections\related.tex
 INPUT .\sections\related.tex
 INPUT .\sections\related.tex
 INPUT sections\related.tex
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\vf\adobe\times\ptmr8c.vf
 INPUT .\sections\methods.tex
 INPUT .\sections\methods.tex
 INPUT .\sections\methods.tex
@@ -275,12 +268,8 @@ INPUT .\writeup.out
 INPUT .\writeup.out
 INPUT C:\Users\Darren Yu\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
 INPUT C:\Users\Darren Yu\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmex10.pfb
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmmi10.pfb
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmmi5.pfb
-INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\Darren Yu\AppData\Local\Programs\MiKTeX1\fonts\type1\public\amsfonts\cm\cmr10.pfb
