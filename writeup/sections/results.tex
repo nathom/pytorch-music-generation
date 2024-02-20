@@ -1,46 +1,9 @@
 \section*{Results}
-
-% In the Results section, you should demonstrate your baseline model’s performance, perfor- mances for each of the parts of Q4.b and Q4.c. You should include both of the performance metrics described in Evaluation metrics (see part 1 above in Implementation Instructions). Please organize these results into a series of concise tables. The formatting is your choice, as long as it is easily interpretable.
-% For each architecture include:
-% (a) A single plot showing both training and validation loss curves;
-% (b) Validation set pixel accuracy and average IoU.
-% (c) Visualizations of the segmented output for any one image in the test set along with the original image. Use the color coding mapping in the voc.py for this (Please refer to visualize.ipynb for help on plotting).
-
-\subsection*{Baseline FCN}
-
-Our baseline FCN resulted in a 0.06 IOU and a 75\% pixel accuracy on the test set.
-
-
-\subsection*{FCN with augmentation}
-
-Our FCN with augmentation resulted in a 0.06 IOU and a 72\% pixel accuracy on the test set. We noticed that the loss convergence
-was slower.
-
-\subsection*{FCN with Cosine Annealing LR}
-
-Our FCN with Cosine Annealing LR resulted in a 0.05 IOU and a 74\% pixel accuracy on the test set.
-
-
-\subsection*{FCN with Custom Class Weights}
-
-
-Our FCN with custom class weights resulted in a slightly worse 0.04 IOU and a 67\% pixel accuracy on the test set.
-
-
-\subsection*{DarrenNet}
-
-In Figure \ref{fig:darren}, we observe the outcomes of DarrenNet. The model has a respectable IOU (0.05) and accuracy (75\%), while maintaining very fast training speeds.
-
-
-
-In Figure \ref{fig:darren_transfer}, we observe the outcomes of DarrenNet with transfer learning using resnet34's encoder. The model leverages pre-trained weights, demonstrating superior performance on the test set. The transfer learning strategy significantly boosts both IOU (0.10) and accuracy (78\%), indicating that the network effectively transfers knowledge from the source domain to the target domain.
-
-
-
-Figure \ref{fig:darren_transfer_aug} represents the results of DarrenNet with both transfer learning and data augmentation. This combination appears to be highly effective, as the model achieves impressive segmentation results on the test set. The incorporation of augmented data during training, along with knowledge transfer, contributes to enhanced generalization capabilities.
-
-
-Figure \ref{fig:darren_aug_aff} displays the results of the DarrenNet with Augment Affine and transfer learning. The model exhibits strong performance on the test set, achieving a high Intersection over Union (IOU) at 0.15 and 82\% accuracy. The augmentation techniques, particularly affine transformations, seem to enhance the model's ability to generalize well to unseen data, resulting in improved segmentation accuracy.
-
-
-The UNet architecture's results are depicted in Figure \ref{fig:unet}. The model demonstrates below average segmentation performance, achieving poor IOU (0.05) and accuracy (0.55) on the test set.
+In the Results section, you should demonstrate your baseline model’s performance, performances for each of the parts of Q3, Q4, Q5 and Q6 (training, generation, hyperparameter tuning, feature evaluation).
+You are expected to report the following things in your submission:
+\begin{enumerate}[label=\alph*)]
+  \item Report results for your baseline model, a 1-hidden layer LSTM with 150 neurons. (2 pt)
+  \item Report the three generated music samples with the above-mentioned three different Temperature (T) settings. Submit their .txt and .midi files as a part of your gradescope submission. (3 pt)
+  \item  Report loss plots for hyperparameter tuning experiments namely: RNNs vs LSTMs, changing number of neurons in the hidden layer and varying dropouts. (6 pt)
+  \item Report heatmaps with appropriate scales, for three different neurons from your best-trained model. (3 pt)
+\end{enumerate}
