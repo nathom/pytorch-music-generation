@@ -1,7 +1,0 @@
-<start>
-X:62
-T:O'DE | D>E EE|D2 D2:|2 ce de|f3e | dg fa|fe fa|fe cA|cB Ac|B/A/A/E/ DB|c/A/A/B/ Bc|BcA dB|A>G FE|cd ef|g2 e de|fd ed cd|BA AG|AB A/G/ A2|B/A/B/ B2|A>B BA|1 Bc f2c|BA (3Bc|d2 AB/c/|ed/c/d/ ce|d(3/e/ dB | ce d2:|2 A2 AF G2 | B2 AB | A2 AG|cA B2 | c>B A2| B2 AB|A2 A/A/B/A|Bd c2|c2 Bc|cd fe|d2 d/2 ef|ez ed/e/d/c/ |fa ed|cA d2|~d3 B/c/ AF|FD G8|A2 Ac/c/B|AF A>c | d2 GA|Bc cd|ef ef e|fe ce|ed cB|A2 FE|1 A4 | A2 A>e | dc e>f|ec d2:|2 AG/c/ B/c/B/ df|A>B A/G/A/|
-B/B/ cd|ef/e/f/ fe|fe dc|BA GE|EF G2:|
-|:B2 BA|f2 f2|e>e af|gf/e/ dB/c/ A/F/|AA FA|| ec/B/A/|DF AB/A/ BA|B/A/ Bc|BA A>A|BG AG A2:|2 AG AF|FA BA|1 E2 DF|FA B/c/d|ef a>f|BA Bc|A>d edB|cA A2c:|2 AF FA|Bd B/g/ | fgf ed|AB/c/ | d2 d2 |
-fe f/g/|gf ec/c/ AG|AF G>E | FA AF|Bc BA|AG E2|A>B ce|fa f/e/f/|eg/f/ gf|d>f D>EF|ED D2:||
-|:~c3 cc|dg fB|ea a2|e>f ed|c/d/ cd|e>f ec|eA B/c/|1 A2A Bd | b E2 | DG/B/ B/c/ f2 | dc A/G/E/|DA|B/A/ AB|c/B/A ga|fa ec|ef/e/ e/f/e/ fe|d2 dc|1 fec d2:|2 A2 AB|A2A Be|fe f/e/f/ ef|e/d/ cA|Bcd ef|f>e dB|c
