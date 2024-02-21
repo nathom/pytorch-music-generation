@@ -78,7 +78,7 @@ def run(args):
     else:
         prime_str = "<start>"
 
-    print("Prime str = ", prime_str)
+    print("Prime str =", prime_str)
     # Generate a song using the trained model
     generated_song = generate_song(
         model,

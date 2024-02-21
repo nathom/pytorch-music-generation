@@ -186,9 +186,10 @@ def show_values(pc, song, fmt="%.2f", **kw):
     -------
         None
     """
+
     pc.update_scalarmappable()
     ax = pc.axes
-    for p, color, value in zip(pc.get_paths(), pc.get_facecolors(), pc.get_array()):
+    for p, color in zip(pc.get_paths(), pc.get_facecolors()):
         x, y = p.vertices[:-2, :].mean(0)
         if np.all(color[:3] > 0.5):
             color = (0.0, 0.0, 0.0)
