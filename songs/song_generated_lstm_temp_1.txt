@@ -1,0 +1,45 @@
+<start>
+X:7
+T:Sligo, The
+R:polka
+B:Intily fast>
+X:57
+T:Mus Bough hhe B2||
+eABB/c/ dB|ce g>d|e/f/e/d/ cA|BA A2:|
+|:f2 fe|fa A2 |
+z2 B2 | A2 A2 :|
+|:z2| "G"A"G|
+"A"A3A ce|fe dB|GB g2|gf g3 gez | d2 B2 dc BAGF |
+K:Amix
+G3 BAG | d2> d2 | B2 A2 | B2 BA | BB BA  G2 AB ||
+|: ef | a2 ef2 | df fe fg | fgf | e2 d2 | e2d>c de fe |
+d4 c2 mailto:galouvielle@free.fr
+Z:id:hn-hornpipe-8
+M:2/4
+L:1/8
+Q:3/8=90
+K:Bb
+|:cB cB|AB teceilto:galobservation alard
+Z:id:hn-polka-50
+M:2/4
+L:1/8
+K:D
+DF/A/ BE|AG AB|cA AB|Ag f/g/e/d/|1 A2 G2||
+<end:id:hn-polka-71
+M:2/4
+L:1/8
+K:F
+GG|c>d gf|e2 ce|dB G>A|BA GF|GA B/c/d|ed BA|Bd B/|AB B>B|cc cA|1 GA B2:|
+|:A/B/c/B/|chel BELLON - 2007-04-27
+Z:Pour toute observates the May
+Z:id:hn-polka-6
+M:2/4
+L:1/8
+K:G
+BG GE|
+AA AB|cA A/B/E|ce Be|ef/g/ fe|dB Bd|B/A/B df|ef gf|af dc|BA AA|Bd Bd|cA AA|BA Bd|fa ge|fe f/g/a/|af ec|dc A/G/A/B/|1 G2 G2:|
+|:fe f>e|dB dB:|Bd B/e/A/| ec/d/ e/f/e/d/| de f/e/d/d/|~G2 A4 d2||
+gf g/f/e/d/|BA ce|1 d2 f>g:|2 BA F2:|
+|:ef/a/|
+ga/a/|
+bg/f/ ef|ae fe|f/a/d 
