@@ -55,24 +55,6 @@ class SongRNN(nn.Module):
         self.dropout = nn.Dropout(DROPOUT_P)
         # self.init_weights()
 
-    def init_weights(self):
-        init_range_emb = 0.1
-        init_range_other = 1 / math.sqrt(self.embedding_dim)
-        self.embedding.weight.data.uniform_(-init_range_emb, init_range_emb)
-        self.fc.weight.data.uniform_(-init_range_other, init_range_other)
-        self.fc.bias.data.zero_()
-        if self.model_type == "LSTM":
-            assert self.lstm is not None
-            for i in range(self.num_layers):
-                self.lstm.all_weights[i][0] = torch.FloatTensor(  # type: ignore
-                    self.embedding_dim, self.embedding_dim
-                ).uniform_(-init_range_other, init_range_other)
-                self.lstm.all_weights[i][1] = torch.FloatTensor(  # type: ignore
-                    self.embedding_dim, self.embedding_dim
-                ).uniform_(-init_range_other, init_range_other)
-        else:
-            raise NotImplementedError
-
     def init_hidden(
         self, batch_size, device
     ) -> tuple[torch.Tensor, torch.Tensor | None]:
@@ -104,7 +86,8 @@ class SongRNN(nn.Module):
     def detach_hidden(self, hidden):
         hidden, cell = hidden
         hidden = hidden.detach()
-        cell = cell.detach()
+        if self.model_type == "LSTM":
+            cell = cell.detach()
         return hidden, cell
 
     def forward(self, seq, hidden):
@@ -131,8 +114,8 @@ class SongRNN(nn.Module):
             output, hidden = self.lstm(embedded, hidden)
         elif self.model_type == "RNN":
             output, _ = self.rnn(embedded)
-            output = output[:, -1, :]  # Take the last time step's output
-            raise NotImplementedError
+            # output = output[:, -1, :]  # Take the last time step's output
+            # raise NotImplementedError
         else:
             raise Exception(f"Invalid model type {self.model_type}")
 

@@ -1,37 +1,42 @@
 <start>
-Z:id:hn-plka-68
-M:2/4
-L:1/8
-K:Amilka
-T:Thens in ? palka
-C:Alolka
-R:polka
-K:Eoss The AB/c/ Ac||
-Bc B/A/ A-|:1/8
-K:F
-E:|/4
-L:1/8
-K:D
-L:1/8
-K:Amf
-A2:|
-e AB|A4 c>A|B AB||
-|:32 e2 e/e/|d2 BA|cBA GB|Bc eg/ f/c/d/B/|de | ef dB|B AG|FA GA|AB/B/c/d|ca/ourka
-Z:id:hn-polka--95
-M:2/4
-L:1/4
-K:G
-T:Shen- #3 #58
-M:4/4
-L:1/8
-K:D
-Adnspiels end|ef ed|ed BB|d che ff ed|ea D>E |e cB|1 GE D>E EF|G2 AB|BA AG|B/G/ A2 B6|1 GB|Bd ce | cd e>d| B2A|1 c2 dc|BA A2|BA B>d|1 I BBA|AFd B|f> f2 ga|gf ea|eg aa | ed c>B|BG D2|
-d2 B2A|FA cA|Bd Bd B2|BA A2 |
-|:B3 ed|B/A/B/f/| fe | dB|eg a2 |ed B/c/|dc Ain EEE|DF Ga|
-|:a|fe d2c|
-Ac|ce dc|B/ AF G2 | FD G^|1 fe|g>e fA| g2 ef/g/c/ ed|cA AB|AG G/B/c/|ed fA|af A2|gfd|e/f/e f/e/|ed dB|1 g2 cB|AB BA|1 AF GF|G BA|AF AB c|BA GG|G>d cA|B2 B/c/A/B/|f e>d | fe fef|e/d/ Bcd|df a2| B>d|B/A/c/ e/d/ A>A|B2 AG | Bf | ce Ad|ef ef|gf gf|ed ed|B/c/B/c/ dc|BA BA|FGE D2:|
-|: A2 f|gf ed|AG G2 Bd|B2 cA|B2 AA||
-L:1/8
-K:D
-B/c/ cB BB|AG cd|e>B| eg f|eA FD | GG G2 :|
-|:2 f>g|fe e2|g/e/ dB/|F A
+Thea>E3 A B f/4
+T:hed/4||d|AB Bcg-2 Hed AF/2 G/2 The Porane c/4
+Z:|banckanvef|eng/c/f/8
+Z:he/AB/8
+T:|^A Ame>gama/cAla c2 G2 ~F/4|1/A Dme G/4
+DD2 T:|1
+X:| G/c2 d e D3 F aid d>
+Z:F Dmag/8
+T:he/ FDD2 B/g/2|1 T:|
+<iche/fg F F A3 T:|
+T:he/2 F/and|
+The/2 cAG2 BcA/4|1 ~EF|
+M:med Ame/fgaraman-4
+R:|B/G, G eg>
+M:|d|
+Hidolplkaba2 ga2 T:|11/4:|
+X:|A/2 e>g/d>ED F, DE|1 A A|
+T:hed f/8
+LLO:hed AB B|(3 d2 EBdB/(3 Cmd>f/G gabled:hag/2 B bllkaiafe/f/4 G ces D FA/BB|B c/4
+Z:he/4 #8
+Hed la4
+C|1ge>A/AFrabe/f|2 G g2 f|e|1 B/8
+D2 Arid>
+R:icd/At>gf/4
+T:h F/4|
+M:1 AGB's AG/e/ B wuid:|AB A2 b/4
+LLLL:|
+<A S:|(3 A/A/|1 chn-4
+K:11 Da/g/fg gf|dB|1 c|aged #4:|
+M:|1 J2 f/8
+R:|(3 d/cd:|1 A2 cA>D F/G~Ula T:h cB gid:hnabad F G/fe Find|1 B|c D:|
+Z:|1 Fz BcA/A/4:|A/B/e-8
+T:|kanag f3/4 uran-2 Acn-506 GA The gregba2:|
+T:g||1 cAA era che/8
+R:1 Fcha3, f/4
+R:|1/ed A/4
+R:|g|1 G2 A/2 PillandB|g/f/A/^c2 ged AF d B A/A2 T:|fed/A gf/B/f/c/B/GB #j G/4
+Pa f/4
+T: F2 B2 E d>
+R:3 BG |1 EF O A/gf/Fan-0e ga/t>
+R: C Ched FGE) C F G

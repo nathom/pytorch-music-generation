@@ -1,0 +1,19 @@
+<start>
+X:17
+T:Bon (3BAG AFD | AGB cBA | e/a/g/e/ fe|ce fe|f2 gf|e2 ec|dB cA|BA AG/e/|fA FA|d/e/d/e/ f/e/d|BA G2||
+|:d2 d>e|fd e>f|ec AB|d2 d>c|BA A2|g/e/d/B/|AF GB|cA AA|de/f/ g2|fd de|f/e/d/B/ AA|BA BG|AB/A/ FE|ED DF|AB/A/ GE|FA FA|df/f/ ga|ef ec|1 e2d ed|cB dB|A>B cA|BB B/c/d|BG Bd|c>B AB|c>B B>A|BA AD|B,D D>E|FA AB|ce e/d/e|f>e d2|ef ed|cc BA|GB Bc|df fe|fa g2|ce fe|1 f2 ef/g/|fe fd|c/d/e/d/|e/f/g/e/ cA|dA dB|AF EF|AB cB|AG (3FED||
+|:d2 e2|de/f/ ge|
+fe ef/e/|dB B/c/d|1 AD D3||
+P:Variaire "Junet Chartic athmons
+Z:id:hn-polka-56
+M:2/4
+L:1/8
+K:Edor
+AF AF|E2 DE|DF D2:|
+|:ef g>f|ef gf|gf ef|ge/f/ bg|ag af|e>d ed|e/f/g/e/ d2|e>d BA|B/A/G/F/E AF||
+|:Bd cB|A>B c>c|ef/e/ fe|fd ce|dg e>d|cA AB|cA AB|BA cA|dB GB|AD FG|AB/c/ AG/A/|BA G>A|Bc BA|
+A/B/c/B/ A2 AB|1 eA Bc|1 A2 A2:|2 DB A2 :|2 AB c>d | BAG G2 :|
+|: A>B AG | A2G FGE | AD A>d | | AA A>B Ab | ee AB | A2d2 | e3 G2 GA | BA BA GA : FED | EFE AFD |
+GFA G2F | A2 | ABA BAG ||
+P:variations the Co,lso #11
+D:Bbme ouren la de|fe cA|1 A2 A2:|2 A2
