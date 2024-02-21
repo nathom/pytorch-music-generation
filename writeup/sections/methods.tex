@@ -1,14 +1,14 @@
 \section*{Methods}
 For our baseline model, we had a simple design of a single hidden layer LSTM. Our network takes in a sequence of music notes in ABC notation one at a time. After going through the hidden layer, the output is a softmax of the probability distribution stream of the upcoming musical character. 
 
-\subsection*{Training network using Teacher forcing}
+\subsection*{Training Network Using Teacher Forcing}
 To train our model, we went with a teacher-forcing technique. After passing in a character to the LSTM, we look at the predicted character and correct the weights if necessary. To update our weights, we used categorical cross-entropy since it best fits the scenario. We went with an Adam optimizer to create a model that does a better job at generalizing outputs based on inputs.
 
 \subsection*{Song Generation}
-
+For song generation, we incorporated a hyperparameter called temperature. Temperature introduces a level of randomness by influencing the probability distribution of categories. Instead of taking the argmax of the probabilities like in a normal softmax layer, we pick the following character by rolling an n-sided dice of n character outputs. By doing this, we allow the music generation to be unique and non-deterministic. To begin, we feed our model an input prompt of characters. After the prompt is finished, we allow the model to generate a character by itself and feed the next character as input. This continues until it reaches an endpoint of fixed length.
 
 \subsection*{Hyper-parameter Tuning}
-Describe the RNN architecture you used in 5.a and briefly describe the approach you took in tuning your hyperparameters.
+To have some kind of comparison, we created an RNN with a single hidden layer that is affected by a dropout rate. A dropout rate is the probability any neuron in the hidden layer gets dropped or is ignored. By including a dropout rate in an RNN, we help reduce the chances of an exploding and vanishing gradient. The size of the hidden layer and the dropout rate are controlled as hyperparameters.
 
 \subsection*{Feature Evaluation}
-Describe why it is important to do feature evaluation. Describe the approach you took in generating the Heatmap of the activation’s of each neurons for each of the characters.
+After generating a musical sample, we can visualize how each generated character affects the neurons in an LSTM. To do this, we first perform a forward pass of each character in the generated sample. Because we are only viewing the neuron activation, we will not call a back pass to avoid updating the gradient. After we perform a pass of the whole sample, we can create a heat map to better visualize how each character affects each neuron.

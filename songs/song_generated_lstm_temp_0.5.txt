@@ -1,0 +1,41 @@
+<start>e "EF A A|
+Z:il D BdBc| F | BG g|G|
+R:A B/B2d|g2 BA A| A|
+X:inpart AF D A A D
+Z:id B A| BA A g|
+R:iste A BA|
+Z:if|d|A A BA BA||| BA A F A A B/2 G AF GA G A d BA A BAGBA B|d B|
+d|:in-pig/2 BA c|:|AF A g A A A/ D f/f/4
+Z:Sen--pin-3 B/4
+|1/BG|B|
+R:in-pate/4
+Z:il A Bc|:1/on-pararif/chnd Bc|
+Z:iste B|e B| |A/2 d|A A d A BABd|
+X:id|
+Z:in-pa A Bc dBAF BA A| |
+Z:irite B B A BG A|
+T:1/onsen-8
+Z:T:inste/4
+Z:iornst Dmarage A| A Bd B|:in-pourt AF d/4
+R:ind/4
+R:il B|
+Z:if/4
+Z:in- B/ d A DEF BA AG|
+T:in-pin--pind|d|ef/d|B|
+Hirin-pons f/BAF|e f/4
+R:il A e/c BA B AG|
+Z:| f d A A AB B Bc B/4
+X:g (3 B2 BA|1/4
+Z:in-parararart/4
+X:iparid d|ba B GB|:ind| A c d| A BA A A G f/Bc|d Bd:inste A B ||Bd GA Bc f/4
+AB BA|| Bc B2 F |
+R:inse2 BA|c HondBd BA BAB:inse|e BA phn-parin
+R:F|2 ~G| B2 D A B| A/4
+R:inst Thin- Bc|1 F Bg| B B|A A AF|c Bd| A B/4
+R:if2 D BA A BG|A BA A|A|d/4
+X:ile BABA d| A:ind| A|A Bc|A A|
+D B2 dBA|BABd Bc B/c g|
+X:inst>
+Z:ind|Be A d|| |AA A G G d|BA A|
+X:iged|| f/4
+T:insst A G A BA G BA 

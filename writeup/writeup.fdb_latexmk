@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex writeup"] 1708481144.01401 "writeup.aux" "writeup.bbl" "writeup" 1708481146.36198 0
+["bibtex writeup"] 1708481144.01401 "writeup.aux" "writeup.bbl" "writeup" 1708484151.91317 0
   "./references.bib" 1708468160 527 1e1e7ebbec0e7258266be167ab64adae ""
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/bibtex/bst/natbib/plainnat.bst" 1284455456 26816 ffe5423d2019860bad9f54bc402fac15 ""
-  "writeup.aux" 1708481145 374 96f41374676fbc8408593b2b21081697 "pdflatex"
+  "writeup.aux" 1708484150 374 96f41374676fbc8408593b2b21081697 "pdflatex"
   (generated)
   "writeup.bbl"
   "writeup.blg"
   (rewritten before read)
-["pdflatex"] 1708481144.33786 "c:/Users/Darren Yu/OneDrive/Documents/GitHub/cse151b251b-wi24-pa3-long_darren_tm/writeup/writeup.tex" "writeup.pdf" "writeup" 1708481146.363 0
+["pdflatex"] 1708484149.13488 "c:/Users/Darren Yu/OneDrive/Documents/GitHub/cse151b251b-wi24-pa3-long_darren_tm/writeup/writeup.tex" "writeup.pdf" "writeup" 1708484151.91452 0
   "C:/Users/Darren Yu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1707371383 80909 eab91d9745dd2edfd62a31d53cd5fe15 ""
   "C:/Users/Darren Yu/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/ectt1000.pk" 1707373016 20028 74b6ee6ff6e13b2eb273198c9fcbe902 ""
   "C:/Users/Darren Yu/AppData/Local/MiKTeX/fonts/tfm/public/amsfonts/cmex7.tfm" 1707372988 940 f9e66c0105a30e64e3a0f5c4f79efb8d ""
@@ -116,16 +116,16 @@
   "C:/Users/Darren Yu/AppData/Local/Programs/MiKTeX1/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "c:/Users/Darren Yu/OneDrive/Documents/GitHub/cse151b251b-wi24-pa3-long_darren_tm/writeup/writeup.tex" 1708468160 1862 937578cfe70d836e00ce1f1d936239bb ""
   "neurips_2023.sty" 1708468160 11801 e7b1d28b625442ee69f3e0509f97aaad ""
-  "sections/abstract.tex" 1708468160 864 e0080bc19f18a8e2dc7d2d84c2696112 ""
-  "sections/contributions.tex" 1708468160 374 d2d692189e3ed0d8c65dcc5c32e23934 ""
+  "sections/abstract.tex" 1708483432 978 5aff7a7ce0b3d6dbf3dc5d252801a3dd ""
+  "sections/contributions.tex" 1708483268 353 15bfd4ed8c5ce6a3cdf7630902814b4e ""
   "sections/discussion.tex" 1708468160 316 514a62b6dadfbd68415f7819267b3f49 ""
-  "sections/intro.tex" 1708468160 745 26f657905e4f0fbf49c7587e9021763e ""
-  "sections/methods.tex" 1708481143 1161 1b67bad7d46cb6d4a0eb6b40248ed837 ""
+  "sections/intro.tex" 1708484125 743 a043160d4980f797e17b6a80f9a809dc ""
+  "sections/methods.tex" 1708484138 2366 490fe51f65a04fcbd4d149cc2b0ae453 ""
   "sections/related.tex" 1708468160 886 ba928dd66e9f33378dc6573dd402077f ""
-  "sections/results.tex" 1708468160 922 d071911fc9a79488225280d2bdd85bbc ""
-  "writeup.aux" 1708481145 374 96f41374676fbc8408593b2b21081697 "pdflatex"
+  "sections/results.tex" 1708484148 186 8930f7e3cae28aa7b36e45dac88b18e7 ""
+  "writeup.aux" 1708484150 374 96f41374676fbc8408593b2b21081697 "pdflatex"
   "writeup.bbl" 1708481144 734 4ec1caaca548ec635ba59d1a3974d4e5 "bibtex writeup"
-  "writeup.out" 1708481145 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "writeup.out" 1708484150 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "writeup.tex" 1708468160 1862 937578cfe70d836e00ce1f1d936239bb ""
   (generated)
   "writeup.aux"

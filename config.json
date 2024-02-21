@@ -15,15 +15,15 @@
 
 	"save_epoch": 20, 
 
-	"temperature": 1, 
+	"temperature": 0.5, 
 
 	"max_generation_length": 1000, 
 
-	"generated_song_file_path": "./song_generated_lstm_temp_1.txt", 
+	"generated_song_file_path": "./song_generated_lstm_temp_0.5.txt", 
 
 	"show_heatmap": false,
 
-	"loss_plot_file_name": "baseline_loss_plot_lstm_temp_1", 
+	"loss_plot_file_name": "baseline_loss_plot_lstm_temp_0.5", 
 
 	"evaluate_model_only": false, 
 
