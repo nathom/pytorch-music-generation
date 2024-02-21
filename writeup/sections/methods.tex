@@ -1,11 +1,14 @@
 \section*{Methods}
-In the Methods section, you should describe the implementation and architectural details of your system - in particular, this addresses how you approached the problem and the design of your solution. For those who believe in reproducible science, this should be fine-grained enough such that somebody could implement your model/algorithm and reproduce the results you claim to achieve.
+For our baseline model, we had a simple design of a single hidden layer LSTM. Our network takes in a sequence of music notes in ABC notation one at a time. After going through the hidden layer, the output is a softmax of the probability distribution stream of the upcoming musical character. 
+
 \subsection*{Training network using Teacher forcing}
-Describe the LSTM architecture, the training procedure, the loss criterion, the optimizer you used.
+To train our model, we went with a teacher-forcing technique. After passing in a character to the LSTM, we look at the predicted character and correct the weights if necessary. To update our weights, we used categorical cross-entropy since it best fits the scenario. We went with an Adam optimizer to create a model that does a better job at generalizing outputs based on inputs.
+
 \subsection*{Song Generation}
-Describe the approach you took to generate a song by priming the network with an initial sequence given to it. You should also discuss the details of incorporating Temperature (T) in generating the output.
+
+
 \subsection*{Hyper-parameter Tuning}
 Describe the RNN architecture you used in 5.a and briefly describe the approach you took in tuning your hyperparameters.
+
 \subsection*{Feature Evaluation}
 Describe why it is important to do feature evaluation. Describe the approach you took in generating the Heatmap of the activation’s of each neurons for each of the characters.
-
