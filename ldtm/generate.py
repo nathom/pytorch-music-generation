@@ -41,16 +41,20 @@ def generate_song(
     # Initialize the hidden state
     hidden = model.init_hidden(1, device)
 
+    all_hidden_list = []
     with torch.no_grad():  # we don't need to calculate the gradient in the validation/testing
         # "build up" hidden state using the beginning of a song '<start>'
         generated_song = prime_str
         prime = characters_to_tensor(generated_song, char_idx_map)
         for i in range(len(prime)):
+            all_hidden_list.append(hidden)
             c = prime[i].unsqueeze(0).unsqueeze(0).to(device)
             _, hidden = model(c, hidden)
 
         # Continue generating the rest of the sequence until reaching the maximum length or encountering the end token.
         for _ in range(max_len - len(prime_str)):
+            all_hidden_list.append(hidden)
+
             input_char = (
                 characters_to_tensor(generated_song[-1], char_idx_map)
                 .unsqueeze(0)
@@ -76,8 +80,9 @@ def generate_song(
     model.train()
 
     if show_heatmap:
-        # TODO: Call the generate_heatmap function to form the heatmap
-        raise NotImplementedError("Heatmap generation not implemented yet")
+        heatmap = torch.FloatTensor([all_hidden_list[i][0][0][0].cpu().numpy() for i in range(len(all_hidden_list))])
+        print(f"Heatmap original shape: {heatmap.shape}")
+        generate_heatmap(generated_song, heatmap, 10)
 
     return generated_song
 
@@ -119,6 +124,6 @@ def generate_heatmap(generated_song, heatmap, neuron_idx=0):
     show_values(heatplot, song=padded_song)
     plt.colorbar(heatplot)
     plt.gca().invert_yaxis()
-    plt.savefig(f"./plots/heatmap_{neuron_idx}.png")
+    plt.savefig(f"./writeup/plots/heatmap_{neuron_idx}.png")
     print(f"==> Heatmap saved for Neuron ID: {neuron_idx}..")
     return
